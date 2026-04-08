@@ -8,10 +8,10 @@ app = Flask(__name__)
 #forming database connection 
 def get_database():
     return mysql.connector.connect(
-        host='DB_HOST',
-        user='DB_USER',
-        password='DB_PASSWORD',
-        database='DB_NAME'
+      host=os.environ.get("DB_HOST"),
+      user=os.environ.get("DB_USER"),
+      password=os.environ.get("DB_PASSWORD"),
+      database=os.environ.get("DB_NAME")
     )
 
 #Home
