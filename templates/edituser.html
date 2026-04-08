@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User</title>
+</head>
+<body>
+
+<!-- Page title -->
+<h1>Edit User</h1>
+<a href="/users">Back to Users</a>
+
+<!-- Form to update user -->
+<form action="/users/edit/{{ user[0] }}" method="POST">
+
+    <!-- Name -->
+    <input type="text" name="name" value="{{ user[1] }}" required>
+
+    <!-- Email -->
+    <input type="email" name="email" value="{{ user[2] }}" required>
+
+    <!-- Role dropdown -->
+    <select name="role">
+        <option value="admin" {% if user[4] == 'admin' %}selected{% endif %}>Admin</option>
+        <option value="staff" {% if user[4] == 'staff' %}selected{% endif %}>Staff</option>
+    </select>
+
+    <!-- Submit button -->
+    <button type="submit">Update</button>
+
+</form>
+
+</body>
+</html>

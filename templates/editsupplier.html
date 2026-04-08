@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Supplier</title>
+</head>
+<body>
+
+<!-- Page title -->
+<h1>Edit Supplier</h1>
+<a href="/suppliers">Back to Suppliers</a>
+
+<!-- Form to update supplier -->
+<form action="/suppliers/edit/{{ supplier[0] }}" method="POST">
+
+    <!-- Supplier name -->
+    <input type="text" name="name" value="{{ supplier[1] }}" required>
+
+    <!-- Phone -->
+    <input type="text" name="phone" value="{{ supplier[2] }}" required>
+
+    <!-- Email -->
+    <input type="email" name="email" value="{{ supplier[3] }}" required>
+
+    <!-- Submit button -->
+    <button type="submit">Update</button>
+
+</form>
+
+</body>
+</html>

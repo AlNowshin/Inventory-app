@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+</head>
+<body>
+
+<!-- Page title -->
+<h1>Edit Product</h1>
+
+<!-- Form to update product -->
+<form action="/edit/{{ product[0] }}" method="POST">
+
+    <!-- Product name -->
+    <input type="text" name="name" value="{{ product[1] }}" required>
+
+    <!-- Price -->
+    <input type="number" name="price" value="{{ product[2] }}" required>
+
+    <!-- Quantity -->
+    <input type="number" name="quantity" value="{{ product[3] }}" required>
+
+    <!-- Supplier dropdown -->
+    <select name="supplier_id">
+        {% for s in suppliers %}
+        <option value="{{ s[0] }}">{{ s[1] }}</option>
+        {% endfor %}
+    </select>
+    <!-- Submit button -->
+    <button type="submit">Update</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Orders</title>
+</head>
+<body>
+
+<h1>Purchase Orders</h1>
+<a href="/">Back to Home</a>
+
+<!-- Add order form -->
+<h2>Add Order</h2>
+<form action="/add_order" method="POST">
+    <select name="product_id">
+        {% for p in products %}
+        <option value="{{ p[0] }}">{{ p[1] }}</option>
+        {% endfor %}
+    </select>
+    <select name="supplier_id">
+        {% for s in suppliers %}
+        <option value="{{ s[0] }}">{{ s[1] }}</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <button type="submit">Add Order</button>
+</form>
+
+<!-- Orders table -->
+<h2>Order List</h2>
+<table border="1">
+    <tr><th>ID</th><th>Product</th><th>Supplier</th><th>Quantity</th><th>Date</th><th>Action</th></tr>
+    {% for o in orders %}
+    <tr>
+        <td>{{ o[0] }}</td>
+        <td>{{ o[1] }}</td>
+        <td>{{ o[2] }}</td>
+        <td>{{ o[3] }}</td>
+        <td>{{ o[4] }}</td>
+        <td><a href="/delete_order/{{ o[0] }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
