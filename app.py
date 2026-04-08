@@ -1,16 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
 #forming database connection 
 def get_database():
     return mysql.connector.connect(
-        host='',
-        user='root',
-        password='Drishty2005$',
-        database='InventoryDB'
+        host='DB_HOST',
+        user='DB_USER',
+        password='DB_PASSWORD',
+        database='DB_NAME'
     )
 
 #Home
@@ -328,4 +329,5 @@ def delete_order(purchase_id):
 
 #to run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+     port = int(os.environ.get("PORT", 5000))  # Use Railway's PORT or fallback to 5000
+     app.run(host='0.0.0.0', port=port, debug=True)
